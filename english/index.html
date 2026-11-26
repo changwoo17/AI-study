@@ -20,6 +20,7 @@
     --guest:#57695f;
     --guest-soft:rgba(87,105,95,.07);
     --shadow:0 1px 2px rgba(70,50,30,.05),0 10px 22px -18px rgba(70,50,30,.45);
+    --wcol:118px;
   }
   html{background:var(--bg);-webkit-text-size-adjust:100%}
   body{
@@ -100,7 +101,7 @@
 
   /* 발음 도움 */
   .pron{display:flex;flex-direction:column;gap:7px;padding:0 16px}
-  .phead,.prow{display:grid;grid-template-columns:auto minmax(58px,.85fr) minmax(70px,1fr);gap:8px;align-items:center}
+  .phead,.prow{display:grid;grid-template-columns:var(--wcol) minmax(56px,.85fr) minmax(66px,1fr);gap:8px;align-items:center}
   .phead{padding:0 12px 2px;font-size:11.5px;font-weight:700;letter-spacing:.08em;color:var(--faint)}
   .prow{padding:9px 11px;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
   .wbtn{
@@ -184,6 +185,7 @@
   .toast.show{opacity:1;transform:translate(-50%,0)}
 
   @media (max-width:359px){
+    :root{--wcol:104px}
     .wbtn{font-size:15px;padding:7px 8px;gap:4px}
     .wbtn .i{width:13px;height:13px}
     .read{font-size:14px}
