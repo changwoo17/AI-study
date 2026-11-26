@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f7f2e8">
+<meta name="description" content="제비술방 영어 회화 1회차 — 손님 맞이와 술 권하기. 스피커를 눌러 한 줄씩 듣고 따라하기.">
+<title>1회차 · 손님 맞이와 술 권하기</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  :root{
+    --bg:#f7f2e8;
+    --surface:#fffdf9;
+    --ink:#2c2825;
+    --muted:#7d736a;
+    --faint:#a3988c;
+    --line:rgba(90,70,50,.12);
+    --accent:#8f5535;
+    --accent-soft:rgba(143,85,53,.07);
+    --guest:#57695f;
+    --guest-soft:rgba(87,105,95,.07);
+    --shadow:0 1px 2px rgba(70,50,30,.05),0 10px 22px -18px rgba(70,50,30,.45);
+  }
+  html{background:var(--bg);-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","맑은 고딕","Noto Sans KR",system-ui,sans-serif;
+    font-size:18px;
+    line-height:1.7;
+    letter-spacing:-0.01em;
+    word-break:keep-all;
+    overflow-wrap:break-word;
+    text-rendering:optimizeLegibility;
+    padding-bottom:calc(30px + env(safe-area-inset-bottom));
+  }
+  button{font-family:inherit;letter-spacing:inherit;color:inherit}
+  .wrap{max-width:640px;margin:0 auto}
+  .i{width:22px;height:22px;display:block;flex:0 0 auto}
+
+  /* 머리 */
+  .hero{padding:34px 22px 6px}
+  .kicker{margin:0 0 10px;font-size:12.5px;font-weight:800;letter-spacing:.14em;color:var(--accent)}
+  .hero h1{margin:0;font-size:31px;line-height:1.28;letter-spacing:-0.035em;font-weight:800}
+  .how{display:flex;gap:9px;align-items:flex-start;margin:16px 0 0;font-size:15px;line-height:1.6;color:var(--muted)}
+  .how .i{width:19px;height:19px;margin-top:3px;color:var(--accent)}
+  .roles{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 0}
+  .chip{font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:999px;letter-spacing:0}
+  .chip.a{background:var(--guest-soft);color:var(--guest);border:1px solid rgba(87,105,95,.18)}
+  .chip.b{background:var(--accent-soft);color:var(--accent);border:1px solid rgba(143,85,53,.20)}
+
+  /* 절 제목 */
+  .sec{display:flex;align-items:baseline;gap:8px;margin:34px 0 4px;padding:0 22px;font-size:19px;font-weight:800;letter-spacing:-0.025em}
+  .sec em{font-style:normal;font-size:12.5px;font-weight:700;color:var(--accent);letter-spacing:0}
+  .sec-sub{margin:0 0 12px;padding:0 22px;font-size:14px;line-height:1.6;color:var(--muted)}
+
+  /* 대화 */
+  .lines{list-style:none;margin:0;padding:0 16px;display:flex;flex-direction:column;gap:9px}
+  .line{
+    display:grid;
+    grid-template-columns:24px minmax(0,1fr) 46px;
+    gap:10px;
+    align-items:start;
+    padding:13px 12px 13px 12px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-left:3px solid transparent;
+    border-radius:16px;
+    box-shadow:var(--shadow);
+    transition:background .18s ease,border-color .18s ease;
+  }
+  .line.a{border-left-color:rgba(87,105,95,.40)}
+  .line.b{border-left-color:rgba(143,85,53,.45);background:#fffdf8}
+  .line.on{border-color:rgba(143,85,53,.35);background:#fdf6ec;border-left-color:var(--accent)}
+  .who{
+    width:24px;height:24px;margin-top:2px;border-radius:8px;
+    display:grid;place-items:center;
+    font-size:12.5px;font-weight:800;letter-spacing:0;
+  }
+  .line.a .who{background:var(--guest-soft);color:var(--guest)}
+  .line.b .who{background:var(--accent-soft);color:var(--accent)}
+  .line.on .who{background:var(--accent);color:#fff}
+  .txt{min-width:0}
+  .en{margin:0;font-size:18.5px;line-height:1.45;font-weight:600;letter-spacing:-0.005em}
+  .ko{margin:5px 0 0;font-size:13.5px;line-height:1.5;color:var(--muted)}
+
+  /* 스피커 버튼 */
+  .spk{
+    width:46px;height:46px;padding:0;border-radius:50%;
+    border:1px solid rgba(143,85,53,.20);
+    background:var(--accent-soft);
+    color:var(--accent);
+    display:grid;place-items:center;cursor:pointer;
+    transition:transform .14s ease,background .16s ease,color .16s ease;
+  }
+  .spk:active{transform:scale(.93)}
+  .spk.on{background:var(--accent);border-color:var(--accent);color:#fff;animation:pulse 1.5s ease-in-out infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(143,85,53,.35)}50%{box-shadow:0 0 0 7px rgba(143,85,53,0)}}
+
+  /* 발음 도움 */
+  .pron{display:flex;flex-direction:column;gap:7px;padding:0 16px}
+  .phead,.prow{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.8fr) minmax(0,1.05fr);gap:8px;align-items:center}
+  .phead{padding:0 12px 2px;font-size:11.5px;font-weight:700;letter-spacing:.08em;color:var(--faint)}
+  .prow{padding:9px 11px;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+  .wbtn{
+    display:inline-flex;align-items:center;gap:6px;min-width:0;
+    padding:8px 10px;border-radius:11px;
+    border:1px solid rgba(143,85,53,.20);
+    background:var(--accent-soft);color:var(--accent);
+    font-size:16.5px;font-weight:700;letter-spacing:-0.01em;cursor:pointer;
+    transition:transform .14s ease,background .16s ease,color .16s ease;
+  }
+  .wbtn:active{transform:scale(.96)}
+  .wbtn .i{width:15px;height:15px}
+  .wbtn span{min-width:0;overflow:hidden;text-overflow:ellipsis}
+  .wbtn.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  .read{font-size:15px;line-height:1.4;color:#5f574f}
+  .mean{font-size:13px;line-height:1.45;color:var(--muted)}
+
+  /* 오늘의 세 문장 */
+  .bigs{display:flex;flex-direction:column;gap:10px;padding:0 16px}
+  .big{
+    display:grid;grid-template-columns:28px minmax(0,1fr) 40px;gap:11px;align-items:center;
+    width:100%;padding:15px 15px 15px 13px;text-align:left;cursor:pointer;
+    background:var(--surface);border:1px solid var(--line);border-radius:18px;
+    box-shadow:var(--shadow);
+    transition:transform .14s ease,background .16s ease,border-color .16s ease;
+  }
+  .big:active{transform:scale(.988)}
+  .big .n{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font-size:13.5px;font-weight:800;letter-spacing:0}
+  .big .ben{display:block;font-size:18.5px;line-height:1.4;font-weight:700;letter-spacing:-0.01em}
+  .big .bko{display:block;margin-top:4px;font-size:13px;line-height:1.45;color:var(--muted)}
+  .big .ic{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent)}
+  .big .ic .i{width:19px;height:19px}
+  .big.on{border-color:rgba(143,85,53,.35);background:#fdf6ec}
+  .big.on .n,.big.on .ic{background:var(--accent);color:#fff}
+
+  /* 아래 조작 */
+  .controls{padding:36px 16px 0}
+  .all{
+    display:flex;align-items:center;justify-content:center;gap:10px;width:100%;
+    padding:17px 18px;border:0;border-radius:20px;cursor:pointer;
+    background:var(--accent);color:#fff;font-size:17.5px;font-weight:800;letter-spacing:-0.01em;
+    box-shadow:0 12px 26px -16px rgba(143,85,53,.95);
+    transition:transform .14s ease,background .16s ease;
+  }
+  .all:active{transform:scale(.99)}
+  .all .i{width:19px;height:19px}
+  .all .cnt{margin-left:auto;font-size:13px;font-weight:700;opacity:.85;letter-spacing:0}
+  .all.playing{background:#6d3f27}
+  .all-note{margin:8px 2px 0;font-size:12.5px;line-height:1.5;color:var(--faint);text-align:center}
+  .slow{
+    display:flex;align-items:center;gap:12px;width:100%;margin-top:10px;
+    padding:14px 16px;border:1px solid var(--line);border-radius:18px;cursor:pointer;
+    background:var(--surface);font-size:16px;font-weight:700;letter-spacing:-0.01em;
+    box-shadow:var(--shadow);
+  }
+  .sw{position:relative;width:46px;height:28px;border-radius:999px;background:rgba(90,70,50,.16);flex:0 0 auto;transition:background .2s ease}
+  .sw::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.22);transition:transform .2s ease}
+  .slow[aria-pressed="true"] .sw{background:var(--accent)}
+  .slow[aria-pressed="true"] .sw::after{transform:translateX(18px)}
+  .slow em{margin-left:auto;font-style:normal;font-size:13px;font-weight:700;color:var(--muted);letter-spacing:0}
+  .foot{margin:20px 4px 0;padding-bottom:6px;font-size:12.5px;line-height:1.7;color:var(--faint);text-align:center}
+
+  /* 재생 중 멈추기 */
+  .stopbar{
+    position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));
+    transform:translate(-50%,14px);display:flex;align-items:center;gap:9px;
+    padding:12px 20px;border:0;border-radius:999px;cursor:pointer;
+    background:rgba(44,40,37,.94);color:#fff;font-size:15px;font-weight:700;letter-spacing:-0.01em;
+    box-shadow:0 12px 30px rgba(0,0,0,.26);z-index:50;
+    opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease;
+  }
+  .stopbar .sq{width:9px;height:9px;border-radius:2px;background:#fff}
+  .stopbar.show{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
+
+  .toast{
+    position:fixed;left:50%;bottom:86px;max-width:86vw;
+    transform:translate(-50%,12px);padding:12px 18px;border-radius:14px;
+    background:rgba(44,40,37,.94);color:#fff;font-size:14px;line-height:1.5;text-align:center;
+    opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease;z-index:60;
+  }
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+
+  @media (min-width:420px){
+    .line{grid-template-columns:26px minmax(0,1fr) 50px;padding:14px}
+    .en{font-size:19px}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="s-spk" viewBox="0 0 24 24">
+    <path d="M3.6 9.4v5.2a1 1 0 0 0 1 1h2.7l3.9 3.2a.9.9 0 0 0 1.5-.7V5.9a.9.9 0 0 0-1.5-.7L7.3 8.4H4.6a1 1 0 0 0-1 1Z" fill="currentColor"/>
+    <path d="M16.2 8.7a4.6 4.6 0 0 1 0 6.6M18.5 6.3a8.1 8.1 0 0 1 0 11.4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="s-play" viewBox="0 0 24 24">
+    <path d="M8 5.6v12.8a1 1 0 0 0 1.5.87l10-6.4a1 1 0 0 0 0-1.74l-10-6.4A1 1 0 0 0 8 5.6Z" fill="currentColor"/>
+  </symbol>
+</svg>
+
+<div class="wrap">
+
+  <header class="hero">
+    <p class="kicker">제비술방 영어 · 1회차</p>
+    <h1>손님 맞이와<br>술 권하기</h1>
+    <p class="how">
+      <svg class="i"><use href="#s-spk"/></svg>
+      <span>스피커를 누르면 소리가 납니다. 영어는 한 번에 한 줄씩.</span>
+    </p>
+    <div class="roles">
+      <span class="chip a">A · 손님</span>
+      <span class="chip b">B · 창우 님</span>
+    </div>
+  </header>
+
+  <h2 class="sec">대화 <em>28줄</em></h2>
+  <p class="sec-sub">한 줄씩 주고받으면 10분쯤 걸립니다.</p>
+
+  <ol class="lines">
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">Good evening. Are you open?</p>
+        <p class="ko">안녕하세요. 영업 중인가요?</p>
+      </div>
+      <button class="spk" data-say="Good evening. Are you open?" aria-label="Good evening. Are you open? 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">Yes, we're open. Welcome!</p>
+        <p class="ko">네, 영업 중입니다. 어서 오세요!</p>
+      </div>
+      <button class="spk" data-say="Yes, we're open. Welcome!" aria-label="Yes, we are open. Welcome! 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">Thank you. Can I sit here?</p>
+        <p class="ko">고맙습니다. 여기 앉아도 될까요?</p>
+      </div>
+      <button class="spk" data-say="Thank you. Can I sit here?" aria-label="Thank you. Can I sit here? 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">Sure. Please sit anywhere.</p>
+        <p class="ko">그럼요. 아무 데나 앉으세요.</p>
+      </div>
+      <button class="spk" data-say="Sure. Please sit anywhere." aria-label="Sure. Please sit anywhere. 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">It's cozy. What is this place?</p>
+        <p class="ko">아늑하네요. 여긴 어떤 곳이에요?</p>
+      </div>
+      <button class="spk" data-say="It's cozy. What is this place?" aria-label="It's cozy. What is this place? 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">We serve Korean traditional liquor.</p>
+        <p class="ko">한국 전통주를 파는 곳입니다.</p>
+      </div>
+      <button class="spk" data-say="We serve Korean traditional liquor." aria-label="We serve Korean traditional liquor. 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">Traditional liquor? Like soju?</p>
+        <p class="ko">전통주요? 소주 같은 건가요?</p>
+      </div>
+      <button class="spk" data-say="Traditional liquor? Like soju?" aria-label="Traditional liquor? Like soju? 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">Yes, but it's different from usual soju. These are distilled.</p>
+        <p class="ko">네, 그런데 보통 소주와 달라요. 이건 증류주입니다.</p>
+      </div>
+      <button class="spk" data-say="Yes, but it's different from usual soju. These are distilled." aria-label="Yes, but it's different from usual soju. These are distilled. 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">How strong is it?</p>
+        <p class="ko">도수는 얼마나 돼요?</p>
+      </div>
+      <button class="spk" data-say="How strong is it?" aria-label="How strong is it? 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">It depends. From 25 to 52 percent.</p>
+        <p class="ko">술마다 달라요. 25도에서 52도까지 있습니다.</p>
+      </div>
+      <button class="spk" data-say="It depends. From 25 to 52 percent." aria-label="It depends. From twenty five to fifty two percent. 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">That's strong. Which one do you recommend?</p>
+        <p class="ko">세네요. 어떤 걸 추천하세요?</p>
+      </div>
+      <button class="spk" data-say="That's strong. Which one do you recommend?" aria-label="That's strong. Which one do you recommend? 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">Do you like it smooth or strong?</p>
+        <p class="ko">부드러운 걸 좋아하세요, 센 걸 좋아하세요?</p>
+      </div>
+      <button class="spk" data-say="Do you like it smooth or strong?" aria-label="Do you like it smooth or strong? 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">Strong, but smooth.</p>
+        <p class="ko">세면서도 부드러운 걸요.</p>
+      </div>
+      <button class="spk" data-say="Strong, but smooth." aria-label="Strong, but smooth. 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">Then try this one. It's 45 percent, but it goes down smooth.</p>
+        <p class="ko">그럼 이거 드셔 보세요. 45도인데 넘어가는 게 부드럽습니다.</p>
+      </div>
+      <button class="spk" data-say="Then try this one. It's 45 percent, but it goes down smooth." aria-label="Then try this one. It's forty five percent, but it goes down smooth. 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">Okay. One glass, please.</p>
+        <p class="ko">좋아요. 한 잔 주세요.</p>
+      </div>
+      <button class="spk" data-say="Okay. One glass, please." aria-label="Okay. One glass, please. 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">Sure. Would you like a snack with it?</p>
+        <p class="ko">네. 안주도 드릴까요?</p>
+      </div>
+      <button class="spk" data-say="Sure. Would you like a snack with it?" aria-label="Sure. Would you like a snack with it? 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">What do you have?</p>
+        <p class="ko">뭐가 있어요?</p>
+      </div>
+      <button class="spk" data-say="What do you have?" aria-label="What do you have? 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">We have dried fish, cheese, and Korean pancakes.</p>
+        <p class="ko">말린 생선, 치즈, 전이 있습니다.</p>
+      </div>
+      <button class="spk" data-say="We have dried fish, cheese, and Korean pancakes." aria-label="We have dried fish, cheese, and Korean pancakes. 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">Cheese sounds good.</p>
+        <p class="ko">치즈가 좋겠네요.</p>
+      </div>
+      <button class="spk" data-say="Cheese sounds good." aria-label="Cheese sounds good. 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">Good choice. It goes well with this liquor.</p>
+        <p class="ko">좋은 선택이에요. 이 술과 잘 어울립니다.</p>
+      </div>
+      <button class="spk" data-say="Good choice. It goes well with this liquor." aria-label="Good choice. It goes well with this liquor. 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">Thank you. Could I have some water too?</p>
+        <p class="ko">고맙습니다. 물도 좀 주시겠어요?</p>
+      </div>
+      <button class="spk" data-say="Thank you. Could I have some water too?" aria-label="Thank you. Could I have some water too? 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">Of course. Here you are.</p>
+        <p class="ko">그럼요. 여기 있습니다.</p>
+      </div>
+      <button class="spk" data-say="Of course. Here you are." aria-label="Of course. Here you are. 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">Excuse me, can I pay by card?</p>
+        <p class="ko">저기요, 카드로 계산할 수 있나요?</p>
+      </div>
+      <button class="spk" data-say="Excuse me, can I pay by card?" aria-label="Excuse me, can I pay by card? 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">Yes, we take cards.</p>
+        <p class="ko">네, 카드 됩니다.</p>
+      </div>
+      <button class="spk" data-say="Yes, we take cards." aria-label="Yes, we take cards. 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">Great. How much is it?</p>
+        <p class="ko">좋네요. 얼마예요?</p>
+      </div>
+      <button class="spk" data-say="Great. How much is it?" aria-label="Great. How much is it? 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">It's thirty-eight thousand won.</p>
+        <p class="ko">3만 8천 원입니다.</p>
+      </div>
+      <button class="spk" data-say="It's thirty-eight thousand won." aria-label="It's thirty eight thousand won. 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">That's fine. Thank you. It was great.</p>
+        <p class="ko">괜찮네요. 고맙습니다. 좋았어요.</p>
+      </div>
+      <button class="spk" data-say="That's fine. Thank you. It was great." aria-label="That's fine. Thank you. It was great. 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">Thank you. Please come again.</p>
+        <p class="ko">고맙습니다. 또 오세요.</p>
+      </div>
+      <button class="spk" data-say="Thank you. Please come again." aria-label="Thank you. Please come again. 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+  </ol>
+
+  <h2 class="sec">발음 도움</h2>
+  <p class="sec-sub">단어를 누르면 그 단어만 읽어 줍니다.</p>
+  <div class="pron">
+    <div class="phead"><span>단어</span><span>읽기</span><span>뜻</span></div>
+    <div class="prow">
+      <button class="wbtn" data-say="liquor" aria-label="liquor 듣기"><svg class="i"><use href="#s-spk"/></svg><span>liquor</span></button>
+      <span class="read">리커</span>
+      <span class="mean">술(증류주)</span>
+    </div>
+    <div class="prow">
+      <button class="wbtn" data-say="distilled" aria-label="distilled 듣기"><svg class="i"><use href="#s-spk"/></svg><span>distilled</span></button>
+      <span class="read">디스틸드</span>
+      <span class="mean">증류한</span>
+    </div>
+    <div class="prow">
+      <button class="wbtn" data-say="percent" aria-label="percent 듣기"><svg class="i"><use href="#s-spk"/></svg><span>percent</span></button>
+      <span class="read">퍼센트</span>
+      <span class="mean">도수, 퍼센트</span>
+    </div>
+    <div class="prow">
+      <button class="wbtn" data-say="recommend" aria-label="recommend 듣기"><svg class="i"><use href="#s-spk"/></svg><span>recommend</span></button>
+      <span class="read">레커멘드</span>
+      <span class="mean">추천하다</span>
+    </div>
+    <div class="prow">
+      <button class="wbtn" data-say="smooth" aria-label="smooth 듣기"><svg class="i"><use href="#s-spk"/></svg><span>smooth</span></button>
+      <span class="read">스무드</span>
+      <span class="mean">부드러운</span>
+    </div>
+    <div class="prow">
+      <button class="wbtn" data-say="snack" aria-label="snack 듣기"><svg class="i"><use href="#s-spk"/></svg><span>snack</span></button>
+      <span class="read">스낵</span>
+      <span class="mean">안주, 간단한 음식</span>
+    </div>
+    <div class="prow">
+      <button class="wbtn" data-say="of course" aria-label="of course 듣기"><svg class="i"><use href="#s-spk"/></svg><span>of course</span></button>
+      <span class="read">오브 코스</span>
+      <span class="mean">물론이죠</span>
+    </div>
+  </div>
+
+  <h2 class="sec">오늘의 세 문장</h2>
+  <p class="sec-sub">입에 붙을 때까지 세 번씩 소리 내어 읽어 보세요.</p>
+  <div class="bigs">
+    <button class="big" data-say="Which one do you recommend?">
+      <span class="n">1</span>
+      <span>
+        <span class="ben">Which one do you recommend?</span>
+        <span class="bko">어떤 걸 추천하세요?</span>
+      </span>
+      <span class="ic"><svg class="i"><use href="#s-spk"/></svg></span>
+    </button>
+    <button class="big" data-say="It goes down smooth.">
+      <span class="n">2</span>
+      <span>
+        <span class="ben">It goes down smooth.</span>
+        <span class="bko">넘어가는 게 부드러워요.</span>
+      </span>
+      <span class="ic"><svg class="i"><use href="#s-spk"/></svg></span>
+    </button>
+    <button class="big" data-say="Would you like a snack with it?">
+      <span class="n">3</span>
+      <span>
+        <span class="ben">Would you like a snack with it?</span>
+        <span class="bko">안주도 드릴까요?</span>
+      </span>
+      <span class="ic"><svg class="i"><use href="#s-spk"/></svg></span>
+    </button>
+  </div>
+
+  <div class="controls">
+    <button class="all" id="allBtn">
+      <svg class="i"><use href="#s-play"/></svg>
+      <span id="allLabel">전체 듣기</span>
+      <span class="cnt" id="allCount">28줄</span>
+    </button>
+    <p class="all-note">대화 28줄을 위에서부터 이어서 읽습니다.</p>
+
+    <button class="slow" id="slowBtn" aria-pressed="false">
+      <span class="sw" aria-hidden="true"></span>
+      <span>느리게 듣기</span>
+      <em id="slowRate">1배</em>
+    </button>
+
+    <p class="foot">
+      소리가 안 나면 폰의 미디어 음량을 확인해 보세요.<br>
+      아이폰은 무음 모드일 때 소리가 나지 않습니다.
+    </p>
+  </div>
+
+</div>
+
+<button class="stopbar" id="stopBar"><span class="sq"></span> 멈추기</button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  var synth = window.speechSynthesis;
+  var Utter = window.SpeechSynthesisUtterance;
+  var OK = !!(synth && Utter);
+  var isIOS = /iP(hone|ad|od)/.test(navigator.userAgent) ||
+              (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+  var RATE = { normal: 1, slow: 0.7 };
+  var rate = 1;
+  try { if (localStorage.getItem('jebi-en-rate') === '0.7') rate = 0.7; } catch (e) {}
+
+  var voice = null;
+  var gen = 0;              // 재생 세대 — 값이 바뀌면 이전 재생·대기열은 무효
+  var activeBtn = null;
+  var activeLine = null;
+  var playingAll = false;
+  var currentUtt = null;   // 발화 객체를 붙잡아 둔다 (크롬에서 GC로 이벤트가 사라지는 것 방지)
+
+  var allBtn = document.getElementById('allBtn');
+  var allLabel = document.getElementById('allLabel');
+  var allCount = document.getElementById('allCount');
+  var slowBtn = document.getElementById('slowBtn');
+  var slowRate = document.getElementById('slowRate');
+  var stopBar = document.getElementById('stopBar');
+  var toastEl = document.getElementById('toast');
+  var toastTimer = 0;
+
+  /* ── 목소리 고르기 ─────────────────────────────── */
+  function score(v) {
+    var n = (v.name || '').toLowerCase();
+    var l = (v.lang || '').replace('_', '-').toLowerCase();
+    if (l.indexOf('en') !== 0) return -1;
+    var s = 0;
+    if (l === 'en-us') s += 40;
+    else if (l === 'en-gb') s += 20;
+    else s += 10;
+    if (n.indexOf('google us english') >= 0) s += 20;
+    if (n.indexOf('samantha') >= 0) s += 16;
+    if (n.indexOf('natural') >= 0) s += 12;
+    if (n.indexOf('enhanced') >= 0 || n.indexOf('premium') >= 0) s += 8;
+    if (/female|woman|aria|jenny|ava|allison|karen|moira|serena/.test(n)) s += 3;
+    if (v.localService) s += 2;
+    return s;
+  }
+  function refreshVoices() {
+    if (!OK) return;
+    var list = [];
+    try { list = synth.getVoices() || []; } catch (e) {}
+    var best = null, bs = -1;
+    for (var i = 0; i < list.length; i++) {
+      var sc = score(list[i]);
+      if (sc > bs) { bs = sc; best = list[i]; }
+    }
+    if (best) voice = best;
+  }
+  if (OK) {
+    refreshVoices();
+    if (synth.addEventListener) synth.addEventListener('voiceschanged', refreshVoices);
+    else synth.onvoiceschanged = refreshVoices;
+    [150, 500, 1200, 2500, 5000].forEach(function (t) { setTimeout(refreshVoices, t); });
+  }
+
+  /* ── 화면 표시 ─────────────────────────────────── */
+  function showToast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 2600);
+  }
+  function setActive(btn, line) {
+    clearActive();
+    if (btn) { btn.classList.add('on'); activeBtn = btn; }
+    if (line) { line.classList.add('on'); activeLine = line; }
+  }
+  function clearActive() {
+    if (activeBtn) { activeBtn.classList.remove('on'); activeBtn = null; }
+    if (activeLine) { activeLine.classList.remove('on'); activeLine = null; }
+  }
+  function playing(on) {
+    playingAll = on;
+    allBtn.classList.toggle('playing', on);
+    allLabel.textContent = on ? '멈추기' : '전체 듣기';
+    stopBar.classList.toggle('show', on);
+    if (!on) allCount.textContent = '28줄';
+  }
+  function setCount(i, total) {
+    allCount.textContent = i + ' / ' + total;
+  }
+
+  /* ── 읽기 ─────────────────────────────────────── */
+  function build(text) {
+    var u = new Utter(text);
+    u.lang = 'en-US';
+    u.pitch = 1;
+    u.rate = rate;
+    if (!voice) refreshVoices();
+    if (voice) {
+      u.voice = voice;
+      if (voice.lang) u.lang = voice.lang;
+    }
+    return u;
+  }
+  function startSpeech(u) {
+    try {
+      currentUtt = u;
+      if (synth.paused) synth.resume();
+      synth.speak(u);
+    } catch (e) {
+      showToast('소리를 내지 못했습니다. 잠시 뒤 다시 눌러 주세요.');
+    }
+  }
+  // cancel 뒤 바로 speak 하면 안드로이드 크롬이 새 소리를 놓치는 경우가 있어
+  // 재생 중이던 것이 있을 때만 아주 짧게 쉬었다 읽는다. (iOS는 제스처 안에서 바로)
+  function speakNow(text, my, onEnd, cancelFirst) {
+    var u = build(text);
+    var done = false;
+    function fin() {
+      if (done) return;
+      done = true;
+      if (my === gen) onEnd();
+    }
+    u.onend = fin;
+    u.onerror = fin;
+
+    if (cancelFirst && (synth.speaking || synth.pending || synth.paused)) {
+      synth.cancel();
+      if (isIOS) startSpeech(u);
+      else setTimeout(function () { if (my === gen) startSpeech(u); }, 70);
+    } else {
+      startSpeech(u);
+    }
+    return u;
+  }
+
+  function stopAll(silent) {
+    gen++;
+    if (OK) { try { synth.cancel(); } catch (e) {} }
+    clearActive();
+    if (playingAll) playing(false);
+  }
+
+  function playOne(text, btn, line) {
+    if (!OK) { showToast('이 브라우저에서는 소리를 낼 수 없습니다.'); return; }
+    if (playingAll) stopAll();
+    gen++;
+    var my = gen;
+    setActive(btn, line);
+    speakNow(text, my, function () { clearActive(); }, true);
+  }
+
+  /* ── 전체 듣기 ─────────────────────────────────── */
+  var items = [].slice.call(document.querySelectorAll('.line')).map(function (el) {
+    var b = el.querySelector('.spk');
+    return { text: b.getAttribute('data-say'), btn: b, line: el };
+  });
+
+  function playAll() {
+    if (!OK) { showToast('이 브라우저에서는 소리를 낼 수 없습니다.'); return; }
+    if (playingAll) { stopAll(); return; }
+
+    stopAll();
+    var my = gen;
+    var i = 0;
+    playing(true);
+
+    function next() {
+      if (my !== gen) return;
+      if (i >= items.length) {
+        playing(false);
+        clearActive();
+        return;
+      }
+      var it = items[i++];
+      setCount(i, items.length);
+      setActive(it.btn, it.line);
+      try { it.line.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (e) {}
+
+      var words = it.text.split(/\s+/).length;
+      var guard = setTimeout(function () {
+        if (my !== gen) return;
+        // 소리가 끝났다는 신호가 오지 않으면 다음 줄로 넘어간다 (안드로이드 크롬 대비)
+        clearActive();
+        next();
+      }, Math.max(6000, words * 700 / rate + 3500));
+
+      speakNow(it.text, my, function () {
+        clearTimeout(guard);
+        clearActive();
+        next();
+      }, false);
+    }
+    next();
+  }
+
+  /* ── 이벤트 ───────────────────────────────────── */
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest ? e.target.closest('button[data-say]') : null;
+    if (!btn) return;
+    e.preventDefault();
+    playOne(btn.getAttribute('data-say'), btn, btn.closest('.line') || btn.closest('.big'));
+  });
+
+  allBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    playAll();
+  });
+  stopBar.addEventListener('click', function (e) {
+    e.preventDefault();
+    stopAll();
+  });
+
+  function paintSlow() {
+    var slow = rate === RATE.slow;
+    slowBtn.setAttribute('aria-pressed', slow ? 'true' : 'false');
+    slowRate.textContent = slow ? '0.7배' : '1배';
+  }
+  slowBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    rate = (rate === RATE.slow) ? RATE.normal : RATE.slow;
+    try { localStorage.setItem('jebi-en-rate', rate === RATE.slow ? '0.7' : '1'); } catch (err) {}
+    paintSlow();
+  });
+  paintSlow();
+
+  // 화면을 다녀오면 표시를 실제 재생 상태에 맞춘다 (잠깐 화면을 껐다 와도 소리는 살려 둔다)
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) return;
+    if (playingAll && !synth.speaking && !synth.pending) {
+      gen++;
+      clearActive();
+      playing(false);
+    }
+  });
+  window.addEventListener('pagehide', function () { stopAll(); });
+
+  if (!OK) {
+    setTimeout(function () { showToast('이 브라우저에서는 소리를 낼 수 없습니다.'); }, 800);
+  } else if (synth.speaking) {
+    synth.cancel();
+  }
+})();
+</script>
+</body>
+</html>
