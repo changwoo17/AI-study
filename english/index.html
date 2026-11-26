@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f7f2e8">
-<meta name="description" content="제비술방 영어 회화 1회차 — 손님 맞이와 술 권하기. 스피커를 눌러 한 줄씩 듣고 따라하기.">
-<title>1회차 · 손님 맞이와 술 권하기</title>
+<meta name="description" content="제비술방 매장 회화 — 영어·중국어. 언어를 고르고 회차를 누르면 한 줄씩 듣고 따라할 수 있습니다.">
+<title>제비술방 매장 회화 · 영어·중국어</title>
 <style>
   *,*::before,*::after{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   :root{
@@ -196,6 +196,89 @@
     .line{grid-template-columns:26px minmax(0,1fr) 50px;padding:14px}
     .en{font-size:19px}
   }
+
+  /* ── 화면 전환 ─────────────────────────────── */
+  .view{display:none}
+  .view.on{display:block;animation:vfade .16s ease}
+  @keyframes vfade{from{opacity:0}to{opacity:1}}
+  .topbar{padding:14px 16px 0}
+  .back{
+    display:inline-flex;align-items:center;gap:7px;
+    padding:9px 15px 9px 12px;border-radius:999px;
+    border:1px solid var(--line);background:var(--surface);
+    color:var(--accent);font-size:14.5px;font-weight:700;letter-spacing:-0.01em;
+    text-decoration:none;box-shadow:var(--shadow);
+    transition:transform .14s ease;
+  }
+  .back:active{transform:scale(.97)}
+  .back .arw{font-size:16px;line-height:1;margin-top:-1px}
+
+  /* ── 언어 선택 ─────────────────────────────── */
+  .langs{display:flex;flex-direction:column;gap:13px;padding:24px 16px 0}
+  .lang{
+    display:grid;grid-template-columns:46px minmax(0,1fr) 18px;gap:13px;align-items:center;
+    padding:19px 17px;border-radius:22px;
+    border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow);
+    text-decoration:none;color:inherit;
+    transition:transform .14s ease,border-color .16s ease;
+  }
+  .lang:active{transform:scale(.985)}
+  .lang:hover{border-color:rgba(143,85,53,.28)}
+  .lang .flag{font-size:28px;line-height:1;text-align:center}
+  .lang .nm{display:block;font-size:19.5px;font-weight:800;letter-spacing:-0.025em}
+  .lang .sub{display:block;margin-top:3px;font-size:13px;line-height:1.45;color:var(--muted)}
+  .lang .go{color:var(--accent);font-size:22px;font-weight:700;line-height:1;text-align:right}
+
+  /* ── 회차 목록 ─────────────────────────────── */
+  .rounds{display:flex;flex-direction:column;gap:12px;padding:20px 16px 0}
+  .rcard{
+    display:flex;flex-direction:column;gap:6px;
+    padding:16px 17px 15px;border-radius:20px;
+    border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow);
+    text-decoration:none;color:inherit;
+    transition:transform .14s ease,border-color .16s ease;
+  }
+  a.rcard:active{transform:scale(.99)}
+  a.rcard:hover{border-color:rgba(143,85,53,.28)}
+  .rtop{display:flex;align-items:center;gap:8px}
+  .rno{
+    font-size:12.5px;font-weight:800;letter-spacing:.02em;
+    color:var(--accent);background:var(--accent-soft);
+    border:1px solid rgba(143,85,53,.18);padding:3px 9px;border-radius:999px;
+  }
+  .rgo{margin-left:auto;color:var(--accent);font-size:20px;font-weight:700;line-height:1}
+  .rtitle{font-size:19.5px;font-weight:800;letter-spacing:-0.028em;line-height:1.32;margin-top:2px}
+  .rdesc{font-size:13.5px;line-height:1.55;color:var(--muted)}
+  .rbads{display:flex;flex-wrap:wrap;gap:6px;margin-top:5px}
+  .badge{
+    font-size:12px;font-weight:700;padding:4px 9px;border-radius:8px;
+    background:rgba(90,70,50,.05);border:1px solid var(--line);color:#6c6259;
+    letter-spacing:0;
+  }
+  .rroles{font-size:12.5px;font-weight:700;color:var(--guest);margin-top:4px;letter-spacing:0}
+  .rcard.soon{background:rgba(255,253,249,.5);border-style:dashed;box-shadow:none;padding:14px 17px}
+  .rcard.soon .rtitle{font-size:15px;font-weight:700;color:#6c6259;letter-spacing:-0.015em;margin-top:0}
+  .rcard.soon .rdesc{font-size:12.5px;color:var(--faint)}
+  .rsoon{font-size:11.5px;font-weight:700;color:var(--faint)}
+
+  /* ── 중국어 화면 ───────────────────────────── */
+  .view[data-lang="zh"]{--wcol:126px}
+  .view[data-lang="zh"] .en,
+  .view[data-lang="zh"] .big .ben{
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC","Source Han Sans SC",-apple-system,sans-serif;
+    letter-spacing:0;word-break:normal;overflow-wrap:break-word;
+  }
+  .py{margin:4px 0 0;font-size:13px;line-height:1.5;color:#8a6a52;letter-spacing:.005em;word-break:normal;overflow-wrap:break-word}
+  .bpy{display:block;margin-top:3px;font-size:12.5px;line-height:1.45;color:#8a6a52}
+  .view[data-lang="zh"] .phead,
+  .view[data-lang="zh"] .prow{grid-template-columns:var(--wcol) minmax(72px,1.15fr) minmax(58px,.85fr)}
+  .view[data-lang="zh"] .read{font-size:13.5px;overflow-wrap:anywhere}
+  .read em{display:block;font-style:normal;font-size:11.5px;line-height:1.4;color:var(--faint);margin-top:1px}
+  .view[data-lang="zh"] .wbtn{font-size:16px}
+  @media (max-width:359px){
+    .view[data-lang="zh"] .wbtn{font-size:14.5px;padding:7px 7px;gap:3px}
+    .view[data-lang="zh"]{--wcol:112px}
+  }
 </style>
 </head>
 <body>
@@ -210,7 +293,95 @@
   </symbol>
 </svg>
 
-<div class="wrap">
+<main id="app">
+
+<section class="view" data-view="home">
+  <div class="wrap">
+
+    <header class="hero">
+      <p class="kicker">ENGLISH · 中文</p>
+      <h1>제비술방<br>매장 회화</h1>
+      <p class="how">
+        <svg class="i"><use href="#s-spk"/></svg>
+        <span>언어를 고르고 회차를 누르면 한 줄씩 듣고 따라할 수 있습니다.</span>
+      </p>
+    </header>
+
+    <div class="langs">
+      <a class="lang" href="#en">
+        <span class="flag" aria-hidden="true">🇺🇸</span>
+        <span>
+          <span class="nm">영어 (English)</span>
+          <span class="sub">손님 맞이와 술 권하기 · 1회차</span>
+        </span>
+        <span class="go" aria-hidden="true">›</span>
+      </a>
+      <a class="lang" href="#zh">
+        <span class="flag" aria-hidden="true">🇨🇳</span>
+        <span>
+          <span class="nm">중국어 (中文)</span>
+          <span class="sub">손님 맞이와 술 권하기 · 1회차</span>
+        </span>
+        <span class="go" aria-hidden="true">›</span>
+      </a>
+    </div>
+
+    <p class="foot" style="margin-top:26px">
+      한 회차는 10분쯤입니다. 스피커를 눌러 한 줄씩 따라해 보세요.<br>
+      소리가 안 나면 폰의 미디어 음량을 확인해 보세요.
+    </p>
+
+  </div>
+</section>
+
+<section class="view" data-view="en" data-lang="en">
+  <div class="wrap">
+    <div class="topbar"><a class="back" href="#"><span class="arw">←</span> 언어 선택</a></div>
+
+    <header class="hero" style="padding-top:20px">
+      <p class="kicker">ENGLISH</p>
+      <h1>영어 회화</h1>
+      <p class="how">
+        <svg class="i"><use href="#s-spk"/></svg>
+        <span>회차를 누르면 대화를 한 줄씩 듣고 따라할 수 있습니다.</span>
+      </p>
+    </header>
+
+    <div class="rounds" data-rounds="en"></div>
+
+    <p class="foot" style="margin-top:26px">
+      회차를 누르면 대화 전문이 열립니다.<br>
+      한 줄씩 듣고, 느리게도 들어 보세요.
+    </p>
+  </div>
+</section>
+
+<section class="view" data-view="zh" data-lang="zh">
+  <div class="wrap">
+    <div class="topbar"><a class="back" href="#"><span class="arw">←</span> 언어 선택</a></div>
+
+    <header class="hero" style="padding-top:20px">
+      <p class="kicker">中文</p>
+      <h1>중국어 회화</h1>
+      <p class="how">
+        <svg class="i"><use href="#s-spk"/></svg>
+        <span>회차를 누르면 대화를 한 줄씩 듣고 따라할 수 있습니다.</span>
+      </p>
+    </header>
+
+    <div class="rounds" data-rounds="zh"></div>
+
+    <p class="foot" style="margin-top:26px">
+      회차를 누르면 대화 전문이 열립니다.<br>
+      한 줄씩 듣고, 느리게도 들어 보세요.
+    </p>
+  </div>
+</section>
+
+<section class="view" data-view="en/01" data-lang="en">
+  <div class="wrap">
+    <div class="topbar"><a class="back" href="#en"><span class="arw">←</span> 회차 목록</a></div>
+
 
   <header class="hero">
     <p class="kicker">제비술방 영어 · 1회차</p>
@@ -526,17 +697,17 @@
   </div>
 
   <div class="controls">
-    <button class="all" id="allBtn">
+    <button class="all" data-all>
       <svg class="i"><use href="#s-play"/></svg>
-      <span id="allLabel">전체 듣기</span>
-      <span class="cnt" id="allCount">28줄</span>
+      <span class="allLabel">전체 듣기</span>
+      <span class="cnt allCount">28줄</span>
     </button>
     <p class="all-note">대화 28줄을 위에서부터 이어서 읽습니다.</p>
 
-    <button class="slow" id="slowBtn" aria-pressed="false">
+    <button class="slow" data-slow aria-pressed="false">
       <span class="sw" aria-hidden="true"></span>
       <span>느리게 듣기</span>
-      <em id="slowRate">1배</em>
+      <em class="slowRate">1배</em>
     </button>
 
     <p class="foot">
@@ -545,12 +716,387 @@
     </p>
   </div>
 
-</div>
 
-<button class="stopbar" id="stopBar"><span class="sq"></span> 멈추기</button>
+  </div>
+</section>
+
+<section class="view" data-view="zh/01" data-lang="zh">
+  <div class="wrap">
+    <div class="topbar"><a class="back" href="#zh"><span class="arw">←</span> 회차 목록</a></div>
+
+  <header class="hero">
+    <p class="kicker">제비술방 중국어 · 1회차</p>
+    <h1>손님 맞이와<br>술 권하기</h1>
+    <p class="how">
+      <svg class="i"><use href="#s-spk"/></svg>
+      <span>스피커를 누르면 소리가 납니다. 중국어는 한 번에 한 줄씩.</span>
+    </p>
+    <div class="roles">
+      <span class="chip a">A · 손님</span>
+      <span class="chip b">B · 창우 님</span>
+    </div>
+  </header>
+
+  <h2 class="sec">대화 <em>28줄</em></h2>
+  <p class="sec-sub">한 줄씩 주고받으면 10분쯤 걸립니다.</p>
+
+  <ol class="lines">
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">晚上好，请问现在营业吗？</p>
+        <p class="py">Wǎnshàng hǎo, qǐngwèn xiànzài yíngyè ma?</p>
+        <p class="ko">안녕하세요. 영업 중인가요?</p>
+      </div>
+      <button class="spk" data-say="晚上好，请问现在营业吗？" aria-label="晚上好，请问现在营业吗？ 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">您好，正在营业，欢迎光临！</p>
+        <p class="py">Nínhǎo, zhèngzài yíngyè, huānyíng guānglín!</p>
+        <p class="ko">네, 영업 중입니다. 어서 오세요!</p>
+      </div>
+      <button class="spk" data-say="您好，正在营业，欢迎光临！" aria-label="您好，正在营业，欢迎光临！ 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">谢谢。我可以坐这里吗？</p>
+        <p class="py">Xièxie. Wǒ kěyǐ zuò zhèlǐ ma?</p>
+        <p class="ko">고맙습니다. 여기 앉아도 될까요?</p>
+      </div>
+      <button class="spk" data-say="谢谢。我可以坐这里吗？" aria-label="谢谢。我可以坐这里吗？ 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">当然可以，请随便坐。</p>
+        <p class="py">Dāngrán kěyǐ, qǐng suíbiàn zuò.</p>
+        <p class="ko">그럼요. 아무 데나 앉으세요.</p>
+      </div>
+      <button class="spk" data-say="当然可以，请随便坐。" aria-label="当然可以，请随便坐。 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">这里挺舒服的。这是什么店？</p>
+        <p class="py">Zhèlǐ tǐng shūfu de. Zhè shì shénme diàn?</p>
+        <p class="ko">아늑하네요. 여긴 어떤 곳이에요?</p>
+      </div>
+      <button class="spk" data-say="这里挺舒服的。这是什么店？" aria-label="这里挺舒服的。这是什么店？ 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">我们卖韩国传统酒。</p>
+        <p class="py">Wǒmen mài Hánguó chuántǒngjiǔ.</p>
+        <p class="ko">한국 전통주를 파는 곳입니다.</p>
+      </div>
+      <button class="spk" data-say="我们卖韩国传统酒。" aria-label="我们卖韩国传统酒。 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">传统酒？像烧酒那样的吗？</p>
+        <p class="py">Chuántǒngjiǔ? Xiàng shāojiǔ nàyàng de ma?</p>
+        <p class="ko">전통주요? 소주 같은 건가요?</p>
+      </div>
+      <button class="spk" data-say="传统酒？像烧酒那样的吗？" aria-label="传统酒？像烧酒那样的吗？ 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">对，不过跟一般的烧酒不一样。这些都是蒸馏酒。</p>
+        <p class="py">Duì, búguò gēn yìbān de shāojiǔ bù yíyàng. Zhèxiē dōu shì zhēngliújiǔ.</p>
+        <p class="ko">네, 그런데 보통 소주와 달라요. 이건 증류주입니다.</p>
+      </div>
+      <button class="spk" data-say="对，不过跟一般的烧酒不一样。这些都是蒸馏酒。" aria-label="对，不过跟一般的烧酒不一样。这些都是蒸馏酒。 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">酒精度数是多少？</p>
+        <p class="py">Jiǔjīng dùshù shì duōshao?</p>
+        <p class="ko">도수는 얼마나 돼요?</p>
+      </div>
+      <button class="spk" data-say="酒精度数是多少？" aria-label="酒精度数是多少？ 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">每个都不一样，从二十五度到五十二度都有。</p>
+        <p class="py">Měi ge dōu bù yíyàng, cóng èrshíwǔ dù dào wǔshí'èr dù dōu yǒu.</p>
+        <p class="ko">술마다 달라요. 25도에서 52도까지 있습니다.</p>
+      </div>
+      <button class="spk" data-say="每个都不一样，从二十五度到五十二度都有。" aria-label="每个都不一样，从二十五度到五十二度都有。 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">挺烈的。您推荐哪一种？</p>
+        <p class="py">Tǐng liè de. Nín tuījiàn nǎ yì zhǒng?</p>
+        <p class="ko">세네요. 어떤 걸 추천하세요?</p>
+      </div>
+      <button class="spk" data-say="挺烈的。您推荐哪一种？" aria-label="挺烈的。您推荐哪一种？ 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">您喜欢柔和的还是烈一点的？</p>
+        <p class="py">Nín xǐhuan róuhé de háishi liè yìdiǎn de?</p>
+        <p class="ko">부드러운 걸 좋아하세요, 센 걸 좋아하세요?</p>
+      </div>
+      <button class="spk" data-say="您喜欢柔和的还是烈一点的？" aria-label="您喜欢柔和的还是烈一点的？ 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">要烈一点，但口感要柔和。</p>
+        <p class="py">Yào liè yìdiǎn, dàn kǒugǎn yào róuhé.</p>
+        <p class="ko">세면서도 부드러운 걸요.</p>
+      </div>
+      <button class="spk" data-say="要烈一点，但口感要柔和。" aria-label="要烈一点，但口感要柔和。 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">那试试这个吧。四十五度，但是入口很顺。</p>
+        <p class="py">Nà shìshi zhège ba. Sìshíwǔ dù, dànshì rùkǒu hěn shùn.</p>
+        <p class="ko">그럼 이거 드셔 보세요. 45도인데 넘어가는 게 부드럽습니다.</p>
+      </div>
+      <button class="spk" data-say="那试试这个吧。四十五度，但是入口很顺。" aria-label="那试试这个吧。四十五度，但是入口很顺。 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">好，请给我一杯。</p>
+        <p class="py">Hǎo, qǐng gěi wǒ yì bēi.</p>
+        <p class="ko">좋아요. 한 잔 주세요.</p>
+      </div>
+      <button class="spk" data-say="好，请给我一杯。" aria-label="好，请给我一杯。 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">好的。要不要来点下酒菜？</p>
+        <p class="py">Hǎo de. Yào bu yào lái diǎn xiàjiǔcài?</p>
+        <p class="ko">네. 안주도 드릴까요?</p>
+      </div>
+      <button class="spk" data-say="好的。要不要来点下酒菜？" aria-label="好的。要不要来点下酒菜？ 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">都有什么？</p>
+        <p class="py">Dōu yǒu shénme?</p>
+        <p class="ko">뭐가 있어요?</p>
+      </div>
+      <button class="spk" data-say="都有什么？" aria-label="都有什么？ 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">有鱼干、奶酪和韩式煎饼。</p>
+        <p class="py">Yǒu yúgān, nǎilào hé Hánshì jiānbing.</p>
+        <p class="ko">말린 생선, 치즈, 전이 있습니다.</p>
+      </div>
+      <button class="spk" data-say="有鱼干、奶酪和韩式煎饼。" aria-label="有鱼干、奶酪和韩式煎饼。 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">奶酪不错。</p>
+        <p class="py">Nǎilào búcuò.</p>
+        <p class="ko">치즈가 좋겠네요.</p>
+      </div>
+      <button class="spk" data-say="奶酪不错。" aria-label="奶酪不错。 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">好眼光。这个跟这款酒很搭。</p>
+        <p class="py">Hǎo yǎnguāng. Zhège gēn zhè kuǎn jiǔ hěn dā.</p>
+        <p class="ko">좋은 선택이에요. 이 술과 잘 어울립니다.</p>
+      </div>
+      <button class="spk" data-say="好眼光。这个跟这款酒很搭。" aria-label="好眼光。这个跟这款酒很搭。 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">谢谢。可以再给我一点水吗？</p>
+        <p class="py">Xièxie. Kěyǐ zài gěi wǒ yìdiǎn shuǐ ma?</p>
+        <p class="ko">고맙습니다. 물도 좀 주시겠어요?</p>
+      </div>
+      <button class="spk" data-say="谢谢。可以再给我一点水吗？" aria-label="谢谢。可以再给我一点水吗？ 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">当然，请用。</p>
+        <p class="py">Dāngrán, qǐng yòng.</p>
+        <p class="ko">그럼요. 여기 있습니다.</p>
+      </div>
+      <button class="spk" data-say="当然，请用。" aria-label="当然，请用。 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">不好意思，可以刷卡吗？</p>
+        <p class="py">Bù hǎoyìsi, kěyǐ shuākǎ ma?</p>
+        <p class="ko">저기요, 카드로 계산할 수 있나요?</p>
+      </div>
+      <button class="spk" data-say="不好意思，可以刷卡吗？" aria-label="不好意思，可以刷卡吗？ 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">可以，我们收卡。</p>
+        <p class="py">Kěyǐ, wǒmen shōu kǎ.</p>
+        <p class="ko">네, 카드 됩니다.</p>
+      </div>
+      <button class="spk" data-say="可以，我们收卡。" aria-label="可以，我们收卡。 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">太好了。多少钱？</p>
+        <p class="py">Tài hǎo le. Duōshao qián?</p>
+        <p class="ko">좋네요. 얼마예요?</p>
+      </div>
+      <button class="spk" data-say="太好了。多少钱？" aria-label="太好了。多少钱？ 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">三万八千韩元。</p>
+        <p class="py">Sān wàn bāqiān hányuán.</p>
+        <p class="ko">3만 8천 원입니다.</p>
+      </div>
+      <button class="spk" data-say="三万八千韩元。" aria-label="三万八千韩元。 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line a">
+      <span class="who">A</span>
+      <div class="txt">
+        <p class="en">好的，谢谢。今天很满意。</p>
+        <p class="py">Hǎo de, xièxie. Jīntiān hěn mǎnyì.</p>
+        <p class="ko">괜찮네요. 고맙습니다. 좋았어요.</p>
+      </div>
+      <button class="spk" data-say="好的，谢谢。今天很满意。" aria-label="好的，谢谢。今天很满意。 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+    <li class="line b">
+      <span class="who">B</span>
+      <div class="txt">
+        <p class="en">谢谢，欢迎下次再来。</p>
+        <p class="py">Xièxie, huānyíng xià cì zài lái.</p>
+        <p class="ko">고맙습니다. 또 오세요.</p>
+      </div>
+      <button class="spk" data-say="谢谢，欢迎下次再来。" aria-label="谢谢，欢迎下次再来。 듣기"><svg class="i"><use href="#s-spk"/></svg></button>
+    </li>
+  </ol>
+
+  <h2 class="sec">발음 도움</h2>
+  <p class="sec-sub">단어를 누르면 그 단어만 읽어 줍니다.</p>
+  <div class="pron">
+    <div class="phead"><span>단어</span><span>병음 · 읽기</span><span>뜻</span></div>
+    <div class="prow">
+      <button class="wbtn" data-say="韩国传统酒" aria-label="韩国传统酒 듣기"><svg class="i"><use href="#s-spk"/></svg><span>韩国传统酒</span></button>
+      <span class="read">Hánguó chuántǒngjiǔ<em>한궈 촨통지우</em></span>
+      <span class="mean">한국 전통주</span>
+    </div>
+    <div class="prow">
+      <button class="wbtn" data-say="蒸馏酒" aria-label="蒸馏酒 듣기"><svg class="i"><use href="#s-spk"/></svg><span>蒸馏酒</span></button>
+      <span class="read">zhēngliújiǔ<em>정리우지우</em></span>
+      <span class="mean">증류주</span>
+    </div>
+    <div class="prow">
+      <button class="wbtn" data-say="酒精度数" aria-label="酒精度数 듣기"><svg class="i"><use href="#s-spk"/></svg><span>酒精度数</span></button>
+      <span class="read">jiǔjīng dùshù<em>지우징 두수</em></span>
+      <span class="mean">도수</span>
+    </div>
+    <div class="prow">
+      <button class="wbtn" data-say="推荐" aria-label="推荐 듣기"><svg class="i"><use href="#s-spk"/></svg><span>推荐</span></button>
+      <span class="read">tuījiàn<em>투이젠</em></span>
+      <span class="mean">추천하다</span>
+    </div>
+    <div class="prow">
+      <button class="wbtn" data-say="柔和" aria-label="柔和 듣기"><svg class="i"><use href="#s-spk"/></svg><span>柔和</span></button>
+      <span class="read">róuhé<em>로우허</em></span>
+      <span class="mean">부드러운</span>
+    </div>
+    <div class="prow">
+      <button class="wbtn" data-say="下酒菜" aria-label="下酒菜 듣기"><svg class="i"><use href="#s-spk"/></svg><span>下酒菜</span></button>
+      <span class="read">xiàjiǔcài<em>샤지우차이</em></span>
+      <span class="mean">안주</span>
+    </div>
+    <div class="prow">
+      <button class="wbtn" data-say="刷卡" aria-label="刷卡 듣기"><svg class="i"><use href="#s-spk"/></svg><span>刷卡</span></button>
+      <span class="read">shuākǎ<em>솨카</em></span>
+      <span class="mean">카드 결제</span>
+    </div>
+  </div>
+
+  <h2 class="sec">오늘의 세 문장</h2>
+  <p class="sec-sub">입에 붙을 때까지 세 번씩 소리 내어 읽어 보세요.</p>
+  <div class="bigs">
+    <button class="big" data-say="您推荐哪一种？">
+      <span class="n">1</span>
+      <span>
+        <span class="ben">您推荐哪一种？</span>
+        <span class="bpy">Nín tuījiàn nǎ yì zhǒng?</span>
+        <span class="bko">어떤 걸 추천하세요?</span>
+      </span>
+      <span class="ic"><svg class="i"><use href="#s-spk"/></svg></span>
+    </button>
+    <button class="big" data-say="入口很顺。">
+      <span class="n">2</span>
+      <span>
+        <span class="ben">入口很顺。</span>
+        <span class="bpy">Rùkǒu hěn shùn.</span>
+        <span class="bko">넘어가는 게 부드러워요.</span>
+      </span>
+      <span class="ic"><svg class="i"><use href="#s-spk"/></svg></span>
+    </button>
+    <button class="big" data-say="要不要来点下酒菜？">
+      <span class="n">3</span>
+      <span>
+        <span class="ben">要不要来点下酒菜？</span>
+        <span class="bpy">Yào bu yào lái diǎn xiàjiǔcài?</span>
+        <span class="bko">안주도 드릴까요?</span>
+      </span>
+      <span class="ic"><svg class="i"><use href="#s-spk"/></svg></span>
+    </button>
+  </div>
+
+  <div class="controls">
+    <button class="all" data-all>
+      <svg class="i"><use href="#s-play"/></svg>
+      <span class="allLabel">전체 듣기</span>
+      <span class="cnt allCount">28줄</span>
+    </button>
+    <p class="all-note">대화 28줄을 위에서부터 이어서 읽습니다.</p>
+
+    <button class="slow" data-slow aria-pressed="false">
+      <span class="sw" aria-hidden="true"></span>
+      <span>느리게 듣기</span>
+      <em class="slowRate">1배</em>
+    </button>
+
+    <p class="foot">
+      소리가 안 나면 폰의 미디어 음량을 확인해 보세요.<br>
+      아이폰은 무음 모드일 때 소리가 나지 않습니다.
+    </p>
+  </div>
+
+  </div>
+</section>
+</main>
+
+<button class="stopbar" id="stopBar" data-stop><span class="sq"></span> 멈추기</button>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
+
 (function () {
   var synth = window.speechSynthesis;
   var Utter = window.SpeechSynthesisUtterance;
@@ -559,27 +1105,114 @@
               (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
   var RATE = { normal: 1, slow: 0.7 };
-  var rate = 1;
-  try { if (localStorage.getItem('jebi-en-rate') === '0.7') rate = 0.7; } catch (e) {}
+  function loadRate(lang) {
+    try { return localStorage.getItem('jebi-' + lang + '-rate') === '0.7' ? RATE.slow : RATE.normal; }
+    catch (e) { return RATE.normal; }
+  }
+  var rates = { en: loadRate('en'), zh: loadRate('zh') };
 
-  var voice = null;
+  /* ── 상태 ─────────────────────────────────── */
   var gen = 0;              // 재생 세대 — 값이 바뀌면 이전 재생·대기열은 무효
   var activeBtn = null;
   var activeLine = null;
-  var playingAll = false;
-  var currentUtt = null;   // 발화 객체를 붙잡아 둔다 (크롬에서 GC로 이벤트가 사라지는 것 방지)
+  var playingView = null;   // 전체 듣기 중인 화면
+  var currentUtt = null;    // 발화 객체를 붙잡아 둔다 (크롬에서 GC로 이벤트가 사라지는 것 방지)
+  var voices = { en: null, zh: null };
 
-  var allBtn = document.getElementById('allBtn');
-  var allLabel = document.getElementById('allLabel');
-  var allCount = document.getElementById('allCount');
-  var slowBtn = document.getElementById('slowBtn');
-  var slowRate = document.getElementById('slowRate');
   var stopBar = document.getElementById('stopBar');
   var toastEl = document.getElementById('toast');
   var toastTimer = 0;
 
-  /* ── 목소리 고르기 ─────────────────────────────── */
-  function score(v) {
+  var views = {};
+  Array.prototype.forEach.call(document.querySelectorAll('.view'), function (v) {
+    views[v.getAttribute('data-view')] = v;
+  });
+
+  /* ── 회차 자료 (여기에 회차를 더하면 목록에 바로 나온다) ─────── */
+  var ROUNDS = {
+    en: [
+      {
+        id: '01', no: '1회차', title: '손님 맞이와 술 권하기',
+        desc: '손님 맞이 · 전통주 추천 · 도수 설명 · 안주 · 카드 계산',
+        badges: ['대화 28줄', '단어 7개', '세 문장'],
+        roles: 'A 손님 / B 사장님', ready: true
+      },
+      { no: '2회차', title: '예약 전화 받기', desc: '다음 회차 · 준비 중', ready: false }
+    ],
+    zh: [
+      {
+        id: '01', no: '1회차', title: '손님 맞이와 술 권하기',
+        desc: '손님 맞이 · 전통주 추천 · 도수 설명 · 안주 · 카드 계산',
+        badges: ['대화 28줄', '단어 7개', '세 문장'],
+        roles: 'A 손님 / B 사장님', ready: true
+      },
+      { no: '2회차', title: '예약 전화 받기', desc: '다음 회차 · 준비 중', ready: false }
+    ]
+  };
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function renderRounds() {
+    ['en', 'zh'].forEach(function (lang) {
+      var host = document.querySelector('[data-rounds="' + lang + '"]');
+      if (!host) return;
+      host.innerHTML = ROUNDS[lang].map(function (r) {
+        if (!r.ready) {
+          return '<div class="rcard soon" aria-disabled="true">' +
+                   '<span class="rtop"><span class="rno">' + esc(r.no) + '</span>' +
+                   '<span class="rsoon">' + esc(r.desc) + '</span></span>' +
+                   '<span class="rtitle">' + esc(r.title) + '</span>' +
+                 '</div>';
+        }
+        return '<a class="rcard" href="#' + lang + '/' + esc(r.id) + '">' +
+                 '<span class="rtop"><span class="rno">' + esc(r.no) + '</span>' +
+                 '<span class="rgo" aria-hidden="true">›</span></span>' +
+                 '<span class="rtitle">' + esc(r.title) + '</span>' +
+                 '<span class="rdesc">' + esc(r.desc) + '</span>' +
+                 '<span class="rbads">' + r.badges.map(function (b) {
+                   return '<span class="badge">' + esc(b) + '</span>';
+                 }).join('') + '</span>' +
+                 '<span class="rroles">' + esc(r.roles) + '</span>' +
+               '</a>';
+      }).join('');
+    });
+  }
+
+  /* ── 화면 전환 ─────────────────────────────── */
+  var TITLES = {
+    'home': '제비술방 매장 회화 · 영어·중국어',
+    'en': '영어 회화 · 제비술방',
+    'zh': '중국어 회화 · 제비술방',
+    'en/01': '1회차 · 손님 맞이와 술 권하기 (영어)',
+    'zh/01': '1회차 · 손님 맞이와 술 권하기 (중국어)'
+  };
+  var current = null;
+
+  function routeKey() {
+    var h = (location.hash || '').replace(/^#\/?/, '').replace(/\/+$/, '');
+    return Object.prototype.hasOwnProperty.call(views, h) ? h : 'home';
+  }
+  function show(key) {
+    if (current === key) return;
+    stopAll();                       // 화면을 옮기면 재생 중인 소리는 바로 끊는다
+    current = key;
+    for (var k in views) {
+      if (Object.prototype.hasOwnProperty.call(views, k)) {
+        views[k].classList.toggle('on', k === key);
+      }
+    }
+    var v = views[key];
+    if (v.getAttribute('data-lang')) paintSlow(v);
+    if (TITLES[key]) document.title = TITLES[key];
+    window.scrollTo(0, 0);
+  }
+  function route() { show(routeKey()); }
+
+  /* ── 목소리 고르기 ─────────────────────────── */
+  function scoreEn(v) {
     var n = (v.name || '').toLowerCase();
     var l = (v.lang || '').replace('_', '-').toLowerCase();
     if (l.indexOf('en') !== 0) return -1;
@@ -595,16 +1228,35 @@
     if (v.localService) s += 2;
     return s;
   }
+  function scoreZh(v) {
+    var n = (v.name || '').toLowerCase();
+    var l = (v.lang || '').replace('_', '-').toLowerCase();
+    if (l.indexOf('zh') !== 0 && l.indexOf('cmn') !== 0) return -1;
+    var s = 0;
+    if (l === 'zh-cn' || l.indexOf('zh-hans') === 0) s += 40;
+    else if (l.indexOf('hans') >= 0) s += 30;
+    else if (l === 'zh' || l.indexOf('cmn') === 0) s += 20;
+    else s += 6;
+    if (n.indexOf('google') >= 0) s += 16;
+    if (/tingting|ting-ting|meijia|mei-jia|xiaoxiao|xiaoyi|yaoyao|huihui|lili/.test(n)) s += 14;
+    if (n.indexOf('natural') >= 0) s += 12;
+    if (n.indexOf('enhanced') >= 0 || n.indexOf('premium') >= 0) s += 6;
+    if (v.localService) s += 2;
+    return s;
+  }
   function refreshVoices() {
     if (!OK) return;
     var list = [];
     try { list = synth.getVoices() || []; } catch (e) {}
-    var best = null, bs = -1;
+    var bestEn = null, se = -1, bestZh = null, sz = -1;
     for (var i = 0; i < list.length; i++) {
-      var sc = score(list[i]);
-      if (sc > bs) { bs = sc; best = list[i]; }
+      var a = scoreEn(list[i]);
+      if (a > se) { se = a; bestEn = list[i]; }
+      var b = scoreZh(list[i]);
+      if (b > sz) { sz = b; bestZh = list[i]; }
     }
-    if (best) voice = best;
+    if (bestEn) voices.en = bestEn;
+    if (bestZh) voices.zh = bestZh;
   }
   if (OK) {
     refreshVoices();
@@ -613,7 +1265,7 @@
     [150, 500, 1200, 2500, 5000].forEach(function (t) { setTimeout(refreshVoices, t); });
   }
 
-  /* ── 화면 표시 ─────────────────────────────────── */
+  /* ── 화면 표시 도우미 ──────────────────────── */
   function showToast(msg) {
     toastEl.textContent = msg;
     toastEl.classList.add('show');
@@ -629,27 +1281,37 @@
     if (activeBtn) { activeBtn.classList.remove('on'); activeBtn = null; }
     if (activeLine) { activeLine.classList.remove('on'); activeLine = null; }
   }
-  function playing(on) {
-    playingAll = on;
-    allBtn.classList.toggle('playing', on);
-    allLabel.textContent = on ? '멈추기' : '전체 듣기';
-    stopBar.classList.toggle('show', on);
-    if (!on) allCount.textContent = '28줄';
+  function allBtnOf(v) { return v ? v.querySelector('[data-all]') : null; }
+  function paintAll(v, on) {
+    if (!v) return;
+    var b = allBtnOf(v);
+    var l = v.querySelector('.allLabel');
+    var c = v.querySelector('.allCount');
+    if (b) b.classList.toggle('playing', on);
+    if (l) l.textContent = on ? '멈추기' : '전체 듣기';
+    if (c && !on) c.textContent = v.querySelectorAll('.line').length + '줄';
   }
-  function setCount(i, total) {
-    allCount.textContent = i + ' / ' + total;
+  function paintSlow(v) {
+    if (!v) return;
+    var lang = v.getAttribute('data-lang') || 'en';
+    var btn = v.querySelector('[data-slow]');
+    var em = v.querySelector('.slowRate');
+    var slow = rates[lang] === RATE.slow;
+    if (btn) btn.setAttribute('aria-pressed', slow ? 'true' : 'false');
+    if (em) em.textContent = slow ? '0.7배' : '1배';
   }
 
-  /* ── 읽기 ─────────────────────────────────────── */
-  function build(text) {
+  /* ── 읽기 ─────────────────────────────────── */
+  function build(text, lang) {
     var u = new Utter(text);
-    u.lang = 'en-US';
+    u.lang = lang === 'zh' ? 'zh-CN' : 'en-US';
     u.pitch = 1;
-    u.rate = rate;
-    if (!voice) refreshVoices();
-    if (voice) {
-      u.voice = voice;
-      if (voice.lang) u.lang = voice.lang;
+    u.rate = rates[lang] || RATE.normal;
+    var v = voices[lang];
+    if (!v) { refreshVoices(); v = voices[lang]; }
+    if (v) {
+      u.voice = v;
+      if (v.lang) u.lang = v.lang;
     }
     return u;
   }
@@ -664,8 +1326,8 @@
   }
   // cancel 뒤 바로 speak 하면 안드로이드 크롬이 새 소리를 놓치는 경우가 있어
   // 재생 중이던 것이 있을 때만 아주 짧게 쉬었다 읽는다. (iOS는 제스처 안에서 바로)
-  function speakNow(text, my, onEnd, cancelFirst) {
-    var u = build(text);
+  function speakNow(text, lang, my, onEnd, cancelFirst) {
+    var u = build(text, lang);
     var done = false;
     function fin() {
       if (done) return;
@@ -685,46 +1347,52 @@
     return u;
   }
 
-  function stopAll(silent) {
+  function stopAll() {
     gen++;
     if (OK) { try { synth.cancel(); } catch (e) {} }
     clearActive();
-    if (playingAll) playing(false);
+    if (playingView) { paintAll(playingView, false); playingView = null; }
+    stopBar.classList.remove('show');
   }
 
-  function playOne(text, btn, line) {
+  function playOne(text, btn, line, lang) {
     if (!OK) { showToast('이 브라우저에서는 소리를 낼 수 없습니다.'); return; }
-    if (playingAll) stopAll();
+    if (playingView) stopAll();
     gen++;
     var my = gen;
     setActive(btn, line);
-    speakNow(text, my, function () { clearActive(); }, true);
+    speakNow(text, lang, my, function () { clearActive(); }, true);
   }
 
-  /* ── 전체 듣기 ─────────────────────────────────── */
-  var items = [].slice.call(document.querySelectorAll('.line')).map(function (el) {
-    var b = el.querySelector('.spk');
-    return { text: b.getAttribute('data-say'), btn: b, line: el };
-  });
-
-  function playAll() {
+  /* ── 전체 듣기 ─────────────────────────────── */
+  function playAll(v) {
     if (!OK) { showToast('이 브라우저에서는 소리를 낼 수 없습니다.'); return; }
-    if (playingAll) { stopAll(); return; }
-
+    if (playingView) { stopAll(); return; }   // 이어 읽는 중이면 멈추기
     stopAll();
+
     var my = gen;
+    var lang = v.getAttribute('data-lang') || 'en';
+    var items = Array.prototype.slice.call(v.querySelectorAll('.line')).map(function (el) {
+      var b = el.querySelector('.spk');
+      return { text: b ? b.getAttribute('data-say') : '', btn: b, line: el };
+    });
     var i = 0;
-    playing(true);
+    playingView = v;
+    paintAll(v, true);
+    stopBar.classList.add('show');
 
     function next() {
       if (my !== gen) return;
       if (i >= items.length) {
-        playing(false);
+        paintAll(v, false);
+        stopBar.classList.remove('show');
+        playingView = null;
         clearActive();
         return;
       }
       var it = items[i++];
-      setCount(i, items.length);
+      var c = v.querySelector('.allCount');
+      if (c) c.textContent = i + ' / ' + items.length;
       setActive(it.btn, it.line);
       try { it.line.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (e) {}
 
@@ -734,9 +1402,9 @@
         // 소리가 끝났다는 신호가 오지 않으면 다음 줄로 넘어간다 (안드로이드 크롬 대비)
         clearActive();
         next();
-      }, Math.max(6000, words * 700 / rate + 3500));
+      }, Math.max(6000, words * 700 / (rates[lang] || 1) + 3500));
 
-      speakNow(it.text, my, function () {
+      speakNow(it.text, lang, my, function () {
         clearTimeout(guard);
         clearActive();
         next();
@@ -745,46 +1413,51 @@
     next();
   }
 
-  /* ── 이벤트 ───────────────────────────────────── */
+  /* ── 이벤트 ───────────────────────────────── */
   document.addEventListener('click', function (e) {
-    var btn = e.target.closest ? e.target.closest('button[data-say]') : null;
-    if (!btn) return;
-    e.preventDefault();
-    playOne(btn.getAttribute('data-say'), btn, btn.closest('.line') || btn.closest('.big'));
+    var t = e.target;
+    if (!t || !t.closest) return;
+
+    var say = t.closest('button[data-say]');
+    if (say) {
+      var v = say.closest('.view');
+      e.preventDefault();
+      playOne(say.getAttribute('data-say'), say, say.closest('.line') || say.closest('.big'),
+              (v && v.getAttribute('data-lang')) || 'en');
+      return;
+    }
+    var all = t.closest('[data-all]');
+    if (all) { e.preventDefault(); playAll(all.closest('.view')); return; }
+    if (t.closest('[data-stop]')) { e.preventDefault(); stopAll(); return; }
+
+    var slow = t.closest('[data-slow]');
+    if (slow) {
+      e.preventDefault();
+      var sv = slow.closest('.view');
+      var lang = (sv && sv.getAttribute('data-lang')) || 'en';
+      rates[lang] = (rates[lang] === RATE.slow) ? RATE.normal : RATE.slow;
+      try { localStorage.setItem('jebi-' + lang + '-rate', rates[lang] === RATE.slow ? '0.7' : '1'); } catch (err) {}
+      paintSlow(sv);
+    }
   });
 
-  allBtn.addEventListener('click', function (e) {
-    e.preventDefault();
-    playAll();
-  });
-  stopBar.addEventListener('click', function (e) {
-    e.preventDefault();
-    stopAll();
-  });
-
-  function paintSlow() {
-    var slow = rate === RATE.slow;
-    slowBtn.setAttribute('aria-pressed', slow ? 'true' : 'false');
-    slowRate.textContent = slow ? '0.7배' : '1배';
-  }
-  slowBtn.addEventListener('click', function (e) {
-    e.preventDefault();
-    rate = (rate === RATE.slow) ? RATE.normal : RATE.slow;
-    try { localStorage.setItem('jebi-en-rate', rate === RATE.slow ? '0.7' : '1'); } catch (err) {}
-    paintSlow();
-  });
-  paintSlow();
+  window.addEventListener('hashchange', route);
 
   // 화면을 다녀오면 표시를 실제 재생 상태에 맞춘다 (잠깐 화면을 껐다 와도 소리는 살려 둔다)
   document.addEventListener('visibilitychange', function () {
     if (document.hidden) return;
-    if (playingAll && !synth.speaking && !synth.pending) {
+    if (playingView && !synth.speaking && !synth.pending) {
       gen++;
       clearActive();
-      playing(false);
+      paintAll(playingView, false);
+      playingView = null;
+      stopBar.classList.remove('show');
     }
   });
   window.addEventListener('pagehide', function () { stopAll(); });
+
+  renderRounds();
+  route();
 
   if (!OK) {
     setTimeout(function () { showToast('이 브라우저에서는 소리를 낼 수 없습니다.'); }, 800);
