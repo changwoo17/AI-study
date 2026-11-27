@@ -97,7 +97,7 @@
     .stack{gap:8px;height:132px;margin:18px 0 16px}
     .stack img{width:78px;height:111px}
   }
-  .year-card .go{position:absolute;right:20px;bottom:20px;font-size:13px;color:var(--green);letter-spacing:.04em}
+  .year-card .go{display:block;text-align:right;margin-top:6px;font-size:13px;color:var(--green);letter-spacing:.04em}
   .year-card .go::after{content:' →'}
 
   .home-foot{text-align:center;padding:26px 0 60px;color:var(--muted);font-size:12.5px;line-height:1.9}
@@ -148,8 +148,9 @@
     .detail-grid{grid-template-columns:300px minmax(0,1fr);gap:52px;align-items:start;margin-top:18px}
     .cover-col{position:sticky;top:26px}
   }
-  .cover-col{max-width:210px}
-  @media (min-width:880px){ .cover-col{max-width:300px} }
+  .cover-col{max-width:150px}
+  .cover-meta{display:none}
+  @media (min-width:880px){ .cover-col{max-width:300px} .cover-meta{display:block} }
   .big-cover{
     width:100%;aspect-ratio:7/10;border-radius:6px;overflow:hidden;background:var(--paper-deep);
     box-shadow:0 24px 40px -24px rgba(50,35,20,.6), 0 0 0 1px rgba(60,45,30,.08);
@@ -163,6 +164,8 @@
   .book-sub{font-family:var(--serif);font-size:15px;color:var(--ink-soft);line-height:1.6;margin:0 0 10px}
   .book-author{font-size:14px;color:var(--muted)}
   .book-author strong{color:var(--ink-soft);font-weight:500}
+  .book-meta{display:none}
+  @media (max-width:879px){ .book-meta{display:block;font-size:12.5px;color:var(--muted);line-height:1.7;margin:6px 0 0} }
 
   .tabs{display:flex;gap:8px;margin:26px 0 0;border-bottom:1px solid var(--line);padding-bottom:0;flex-wrap:wrap}
   .tab{
@@ -333,6 +336,7 @@
           '<h1 class="book-title">' + esc(b.title) + '</h1>' +
           '<p class="book-sub">' + esc(b.sub || '') + '</p>' +
           '<p class="book-author"><strong>' + esc(b.author) + '</strong></p>' +
+          '<p class="book-meta">' + esc(b.meta) + '</p>' +
           '<div class="tabs" role="tablist" aria-label="책 내용">' +
             '<button class="tab" role="tab" id="tab-0" aria-controls="panel-0" aria-selected="true" data-i="0">작가 소개</button>' +
             '<button class="tab" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="false" data-i="1">줄거리</button>' +
